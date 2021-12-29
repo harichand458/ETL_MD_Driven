@@ -39,11 +39,11 @@ def generate_lms_data():
 
     u_char = configs['file.delimiter'].encode('utf8').decode('unicode-escape')
 
-    course_df.to_csv(configs['input.base.dir'] + '\\courses\\part-r-00000-' + str(uuid.uuid4()), sep=u_char,
+    course_df.to_csv(configs['input.base.dir'] + '/courses/part-r-00000-' + str(uuid.uuid4()), sep=u_char,
                      index=False, header=True, encoding='utf8')
-    user_df.to_csv(configs['input.base.dir'] + '\\users\\part-r-00000-' + str(uuid.uuid4()), sep=u_char, index=False,
+    user_df.to_csv(configs['input.base.dir'] + '/users/part-r-00000-' + str(uuid.uuid4()), sep=u_char, index=False,
                    header=True)
-    ce_df.to_csv(configs['input.base.dir'] + '\\course_enrollments\\part-r-00000-' + str(uuid.uuid4()), sep=u_char,
+    ce_df.to_csv(configs['input.base.dir'] + '/course_enrollments/part-r-00000-' + str(uuid.uuid4()), sep=u_char,
                  index=False, header=True)
 
 
