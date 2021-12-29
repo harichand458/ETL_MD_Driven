@@ -24,7 +24,7 @@ def main():
 
     u_char = configs['file.delimiter'].encode('utf8').decode('unicode-escape')
     for table_name in os.listdir(configs['input.base.dir']):
-        csv_df = spark.read.csv(configs['input.base.dir'] + '/' + table_name + '/', sep=u_char, header=True)
+        csv_df = spark.read.csv(configs['hdfs.base.dir'] + '/lms/' + table_name + '/', sep=u_char, header=True)
 
         csv_df = csv_df.select(
             *(f.when(f.col(c) == '\\N', None).otherwise(f.col(c)).alias(c) for c in csv_df.columns))

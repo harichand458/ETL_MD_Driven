@@ -14,7 +14,7 @@ def get_config():
 def copy_local_to_hdfs():
     import subprocess
     configs = get_config()
-    subprocess.check_call(f"hdfs dfs -copyFromLocal -f {configs['input.base.dir']} {configs['output.base.dir']}",
+    subprocess.check_call(f"hdfs dfs -copyFromLocal -f {configs['input.base.dir']} {configs['hdfs.base.dir']}",
                           shell=True)
 
 
