@@ -32,7 +32,7 @@ def main():
         spark_df = spark.read.table(f"{configs['hive.db']}.{table_name}")
 
         dtypes_casted = list(
-            map(lambda dtype: f' trim(cast({dtype[0]} as {dtype[1]})) as {dtype[0]} ', spark_df.dtypes))
+            map(lambda dtype: f'cast(trim({dtype[0]}) as {dtype[1]}) {dtype[0]}', spark_df.dtypes))
 
         csv_df = csv_df.selectExpr(dtypes_casted[0:len(dtypes_casted)])
         spark.sql(f"truncate table {configs['hive.db']}.{table_name}")
